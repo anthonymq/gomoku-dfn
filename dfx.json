@@ -1,0 +1,40 @@
+{
+    "canisters": {
+      "gomoku": {
+        "main": "src_mo/gomoku/main.mo",
+        "type": "motoko"
+      },
+      "gomoku_assets": {
+        "dependencies": [
+          "gomoku"
+        ],
+        "frontend": {
+          "entrypoint": "src/main.js",
+          "output": "canisters/gomoku_assets/assets"
+        },
+        "source": [
+          "dist"
+        ],
+        "type": "assets"
+      }
+    },
+    "defaults": {
+      "build": {
+        "packtool": ""
+      }
+    },
+    "dfx": "0.6.0",
+    "networks": {
+      "local": {
+        "bind": "0.0.0.0:8000",
+        "type": "ephemeral"
+      },
+      "tungsten": {
+        "providers": [
+          "https://gw.dfinity.network"
+        ],
+        "type": "persistent"
+      }
+    },
+    "version": 1
+  }
