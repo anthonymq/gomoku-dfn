@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "devDependencies": {
     "@dfinity/agent": "0.6.0",
+    "copy-webpack-plugin": "^6.0.3",
     "cross-env": "^5.2.0",
     "css-loader": "^2.1.1",
     "mini-css-extract-plugin": "^0.6.0",
@@ -12,13 +13,14 @@
     "svelte-loader": "2.13.3",
     "webpack": "^4.30.0",
     "webpack-cli": "^3.3.0",
-    "webpack-dev-server": "^3.3.1"
+    "webpack-dev-server": "^3.11.0"
   },
   "scripts": {
     "build": "webpack",
     "dev": "webpack-dev-server --content-base dist"
   },
   "dependencies": {
-    "sveltestrap": "^3.7.2"
+    "sveltestrap": "^3.7.2",
+    "yrv": "0.0.30"
   }
 }

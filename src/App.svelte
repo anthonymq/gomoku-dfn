@@ -1,13 +1,8 @@
 <script>
-  import { Button, Col, Row } from "sveltestrap";
+  import { Container, Col, Row } from "sveltestrap";
+  import { Router, Route, Link, router } from "yrv";
 
-  import gomoku from "ic:canisters/gomoku";
-  export let name;
-  export let greeting;
-
-  gomoku.greet("lol").then((resp) => {
-    greeting = resp;
-  });
+  Router.hashchange = true;
 </script>
 
 <style>
@@ -21,14 +16,30 @@
     rel="stylesheet"
     href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
 </head>
-<Row>
-  <Col>
-    <h1>Hello {name}!</h1>
-  </Col>
-</Row>
-<!-- <Row><h1>{greeting}</h1></Row> -->
-<Row>
-  <Col>
-    <Button color="primary" outline>Hello World!</Button>
-  </Col>
-</Row>
+
+<Container>
+  <Link reload href="/">Home</Link>
+  |
+  <Link reload href="/register">Registration</Link>
+  |
+  <Link reload href="/list">Players</Link>
+
+  <Router>
+    <Route exact
+      path="/"
+      component={() => import('./Home.svelte')}
+    />
+    <Route
+      exact
+      path="/register"
+      component={() => import('./players/Register.svelte')} />
+    <Route
+      exact
+      path="/list"
+      component={() => import('./players/RecentPlayers.svelte')} />
+    <Route
+      exact
+      path="/board"
+      component={() => import('./game/Board.svelte')} />
+  </Router>
+</Container>

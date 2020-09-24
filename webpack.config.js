@@ -1,4 +1,7 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const webpack = require('webpack');
+const CopyPlugin = require('copy-webpack-plugin');
+
 const path = require('path');
 
 const mode = process.env.NODE_ENV || 'development';
@@ -33,7 +36,6 @@ const aliases = Object.entries(dfxJson.canisters).reduce(
 	  svelte: path.resolve('node_modules', 'svelte')
 	}
   );
-console.log(aliases);
 /**
  * Generate a webpack configuration for a canister.
  */
@@ -54,8 +56,8 @@ function generateWebpackConfigForCanister(name, info) {
 	  },
 	  resolve: {
 		alias: aliases,
-		// extensions: ['.mjs', '.js', '.svelte'],
-		// mainFields: ['svelte', 'browser', 'module', 'main']
+		extensions: ['.mjs', '.js', '.svelte'],
+		mainFields: ['svelte', 'browser', 'module', 'main']
 	  },
 	  output: {
 		path: __dirname + '/dist',
@@ -96,7 +98,15 @@ function generateWebpackConfigForCanister(name, info) {
 	  plugins: [
 		new MiniCssExtractPlugin({
 			filename: '[name].css'
-		})
+		}),
+		new CopyPlugin({
+			patterns: [
+			  { from: 'public', to: '' }
+			]
+		  }),
+		new webpack.optimize.LimitChunkCountPlugin({
+			maxChunks: 1,
+		  }),
 	  ]
 	}
   }
