@@ -7,6 +7,7 @@ import Array "mo:base/Array";
 import Text "mo:base/Text";
 import Debug "mo:base/Debug";
 import Option "mo:base/Option";
+import BigMap "canister:BigMap";
 
 actor {
   // We use stable var to help keeping player data through upgrades.

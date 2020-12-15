@@ -1,5 +1,13 @@
 {
     "canisters": {
+      "BigMap": {
+        "main": "vendor/motoko-bigmap/app/Main.mo",
+        "type": "motoko"
+      },
+      "SegCan": {
+        "main": "vendor/motoko-bigmap/app/SegCan.mo",
+        "type": "motoko"
+      },
       "gomoku": {
         "main": "src_mo/gomoku/main.mo",
         "type": "motoko"
@@ -20,10 +28,10 @@
     },
     "defaults": {
       "build": {
-        "packtool": ""
+        "packtool": "vessel-macos sources"
       }
     },
-    "dfx": "0.6.9",
+    "dfx": "0.6.10",
     "networks": {
       "local": {
         "bind": "0.0.0.0:8000",
